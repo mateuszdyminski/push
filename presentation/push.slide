@@ -1,0 +1,43 @@
+Http2 Server Push
+
+Mateusz Dymiński
+@m_dyminski
+github.com/mateuszdyminski/push
+
+* Push feature in HTTP/2
+
+HTTP/2 Push allows a web server to send resources to a web browser before the browser gets to request them. It is, for the most part, a performance technique that can help some websites load faster.
+
+HTTP/2 Push[1] is not a mechanism for the server to notify things to the browser. Instead, pushed contents are used by the browser when it may have otherwise produced a request to get the resource anyway. But if the browser does not request the resource, the pushed contents become wasted bandwidth.
+
+Source [[https://en.wikipedia.org/wiki/HTTP/2_Server_Push][HTTP/2 Server Push]]
+
+* Push feature in Golang
+
+If a web server supports HTTP/2, the http.ResponseWriter implements the new http.Pusher interface.
+
+Handlers can use its functionality to trigger a Server Push for a resource by providing an HTTP method, path, and request headers.
+
+This request is created "by hand" and is served by the registered handler of the http.Server that served the original request.
+
+* http.Pusher interface
+
+.code data/pusher.go
+
+* HTTP/2 push example in Golang
+
+.code ../push.go /func main/,/^}/
+
+.code ../push.go /func serveIndex/,/^}/
+
+* How it looks in Chrome 54 - without Push
+
+.image data/without-push.png _ 1000
+
+* How it looks in Chrome 54 - Push
+
+.image data/with-push.png _ 1000
+
+* Demo!
+
+* Questions?
