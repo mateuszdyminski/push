@@ -12,6 +12,10 @@ HTTP/2 Push[1] is not a mechanism for the server to notify things to the browser
 
 Source [[https://en.wikipedia.org/wiki/HTTP/2_Server_Push][HTTP/2 Server Push]]
 
+* Push feature in HTTP/2
+
+.image data/http2push.png _ 600
+
 * Push feature in Golang
 
 If a web server supports HTTP/2, the http.ResponseWriter implements the new http.Pusher interface.
